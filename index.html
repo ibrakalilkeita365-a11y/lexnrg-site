@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEXNRG — Droit & Énergie Renouvelable en Afrique</title>
+<meta name="description" content="La plateforme de référence sur le droit et la réglementation des énergies renouvelables en Afrique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1628;--bg2:#0d1c38;--bg3:#111f3e;--green:#00C896;--green-d:#00a07a;--border:rgba(0,200,150,0.15);--border2:rgba(255,255,255,0.06);--white:#f0f4ff;--muted:#7a8faa;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,200,150,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,150,0.03) 1px,transparent 1px);background-size:64px 64px;}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.5px;text-decoration:none;color:var(--white);}
+.logo span{color:var(--green);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{color:var(--muted);font-size:14px;text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--green);color:var(--bg);font-weight:600;font-size:14px;padding:9px 22px;border-radius:4px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;}
+.nav-cta:hover{background:var(--green-d);}
+.hero{padding:140px 0 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,150,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,200,150,0.1);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--green);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:24px;}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,50px);line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;}
+.hero-title em{color:var(--green);font-style:normal;}
+.hero-sub{color:var(--muted);font-size:17px;line-height:1.65;margin-bottom:36px;max-width:480px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{background:var(--green);color:var(--bg);font-weight:600;font-size:15px;padding:13px 28px;border-radius:4px;text-decoration:none;transition:background 0.2s;display:inline-block;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.btn:hover{background:var(--green-d);}
+.btn-o{border:1px solid var(--border);color:var(--white);font-weight:500;font-size:15px;padding:13px 28px;border-radius:4px;text-decoration:none;transition:border-color 0.2s,color 0.2s;display:inline-block;cursor:pointer;background:transparent;font-family:'DM Sans',sans-serif;}
+.btn-o:hover{border-color:var(--green);color:var(--green);}
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);}
+.card-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:16px;}
+.stats-row{display:flex;gap:24px;margin-bottom:24px;}
+.stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--green);line-height:1;}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:4px;}
+.country-list{display:flex;flex-wrap:wrap;gap:8px;}
+.ctag{background:rgba(0,200,150,0.08);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:13px;color:var(--muted);cursor:pointer;transition:color 0.2s,border-color 0.2s;}
+.ctag:hover{color:var(--green);border-color:rgba(0,200,150,0.4);}
+.sdiv{height:1px;background:var(--border2);position:relative;z-index:1;}
+section{padding:80px 0;position:relative;z-index:1;}
+.ey{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:12px;}
+.st{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(26px,3.5vw,38px);line-height:1.15;letter-spacing:-1px;margin-bottom:16px;}
+.ss{color:var(--muted);font-size:16px;max-width:560px;line-height:1.65;margin-bottom:48px;}
+/* CHIFFRES */
+#stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.kpi{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:28px 24px;text-align:center;}
+.kpi-num{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;color:var(--green);line-height:1;margin-bottom:8px;}
+.kpi-lbl{font-size:13px;color:var(--muted);line-height:1.5;}
+/* PROBLÈME */
+.pb-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+.pb{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:24px;}
+.pb-icon{font-size:28px;margin-bottom:14px;}
+.pb-title{font-weight:600;font-size:15px;margin-bottom:8px;}
+.pb-text{font-size:14px;color:var(--muted);line-height:1.6;}
+/* MODULES */
+#modules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.mc{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:28px;cursor:pointer;transition:border-color 0.3s,transform 0.3s;position:relative;}
+.mc:hover{border-color:var(--green);transform:translateY(-3px);}
+.mc::after{content:'Voir →';position:absolute;bottom:16px;right:20px;color:var(--green);font-size:12px;opacity:0;transition:opacity 0.2s;}
+.mc:hover::after{opacity:1;}
+.mc-num{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);opacity:0.7;font-weight:600;margin-bottom:12px;}
+.mc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:10px;}
+.mc-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:36px;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.tag{font-size:11px;background:rgba(0,200,150,0.08);border:1px solid var(--border);border-radius:3px;padding:3px 8px;color:var(--green);}
+.tag-g{font-size:12px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:4px;padding:4px 10px;color:var(--muted);}
+/* PAYS */
+#pays-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.pc{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:20px;cursor:pointer;transition:border-color 0.3s,transform 0.3s;}
+.pc:hover{border-color:var(--green);transform:translateY(-3px);}
+.pc-flag{font-size:28px;margin-bottom:10px;}
+.pc-badge{display:inline-block;font-size:10px;font-weight:600;background:rgba(0,200,150,0.15);color:var(--green);border-radius:3px;padding:2px 7px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;}
+.pc-nom{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:4px;}
+.pc-region{font-size:12px;color:var(--muted);margin-bottom:10px;}
+.pc-eri{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
+.pc-eri-lbl{font-size:11px;color:var(--muted);}
+.pc-stars{color:var(--green);font-size:12px;}
+.pc-tag{font-size:11px;background:rgba(0,200,150,0.07);border:1px solid rgba(0,200,150,0.15);border-radius:3px;padding:2px 7px;color:var(--muted);}
+/* PROFILS */
+#profils-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.pf{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:28px;display:flex;gap:20px;align-items:flex-start;}
+.pf-icon{width:48px;height:48px;border-radius:8px;background:rgba(0,200,150,0.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.pf-title{font-weight:700;font-size:16px;margin-bottom:6px;}
+.pf-text{font-size:14px;color:var(--muted);line-height:1.6;}
+/* FONDATEUR */
+.fc{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;}
+.fc-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--green),#0a8c62);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--bg);flex-shrink:0;}
+.fc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:4px;}
+.fc-title{font-size:14px;color:var(--green);margin-bottom:16px;}
+.fc-bio{font-size:15px;color:var(--muted);line-height:1.7;max-width:600px;}
+.fc-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.fc-badge{font-size:12px;background:rgba(0,200,150,0.08);border:1px solid var(--border);border-radius:4px;padding:4px 10px;color:var(--muted);}
+/* NEWSLETTER */
+.nl{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:56px 48px;text-align:center;position:relative;overflow:hidden;}
+.nl::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,150,0.06) 0%,transparent 70%);pointer-events:none;}
+.nl .ss{margin:0 auto 32px;}
+.email-row{display:flex;gap:12px;max-width:460px;margin:0 auto;}
+.email-in{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;}
+.email-in::placeholder{color:var(--muted);}
+.email-in:focus{border-color:var(--green);}
+.form-note{font-size:12px;color:var(--muted);margin-top:10px;}
+.form-ok{display:none;background:rgba(0,200,150,0.1);border:1px solid var(--border);border-radius:8px;padding:14px;color:var(--green);font-size:14px;max-width:460px;margin:12px auto 0;}
+.soc-row{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
+.soc-a{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:8px 16px;font-size:13px;color:var(--muted);text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+.soc-a:hover{border-color:var(--green);color:var(--green);}
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border2);padding:40px 0;position:relative;z-index:1;}
+.fi{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.fl{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--white);}
+.fl span{color:var(--green);}
+.flinks{display:flex;gap:24px;flex-wrap:wrap;}
+.flinks a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.flinks a:hover{color:var(--white);}
+.fc-copy{font-size:13px;color:var(--muted);}
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;z-index:200;background:rgba(5,12,25,0.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;}
+.mo.open{display:flex;}
+.mb{background:var(--bg2);border:1px solid var(--border);border-radius:14px;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;position:relative;padding:40px;}
+.mb::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);border-radius:14px 14px 0 0;}
+.mcl{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;transition:color 0.2s;}
+.mcl:hover{color:var(--white);}
+.m-ey{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:10px;}
+.m-ti{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.5px;margin-bottom:8px;}
+.m-su{font-size:14px;color:var(--muted);margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border2);}
+.m-sec{margin-bottom:24px;}
+.m-sec-ti{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.m-body{font-size:14px;color:var(--muted);line-height:1.75;}
+.m-body strong{color:var(--white);font-weight:600;}
+.m-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+.m-stat{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:16px;text-align:center;}
+.m-stat-n{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--green);margin-bottom:4px;}
+.m-stat-l{font-size:11px;color:var(--muted);}
+.m-list{list-style:none;padding:0;}
+.m-list li{font-size:14px;color:var(--muted);padding:8px 0 8px 20px;border-bottom:1px solid var(--border2);line-height:1.6;position:relative;}
+.m-list li:last-child{border-bottom:none;}
+.m-list li::before{content:'→';color:var(--green);position:absolute;left:0;}
+.m-list li strong{color:var(--white);}
+.m-cta{margin-top:28px;}
+/* MODAL NEWSLETTER */
+.nl-mo .mb{max-width:500px;text-align:center;}
+.m-in{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;margin-bottom:12px;transition:border-color 0.2s;}
+.m-in:focus{border-color:var(--green);}
+.m-in::placeholder{color:var(--muted);}
+.m-ok{display:none;background:rgba(0,200,150,0.1);border:1px solid var(--border);border-radius:8px;padding:14px;color:var(--green);font-size:14px;margin-top:12px;}
+/* RESPONSIVE */
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}#modules-grid{grid-template-columns:1fr 1fr;}#pays-grid{grid-template-columns:1fr 1fr;}#stats-grid{grid-template-columns:1fr 1fr;}#profils-grid{grid-template-columns:1fr;}.fc{grid-template-columns:1fr;gap:24px;padding:32px;}.nav-links{display:none;}}
+@media(max-width:600px){.container{padding:0 20px;}#modules-grid{grid-template-columns:1fr;}.email-row{flex-direction:column;}.mb{padding:24px 18px;}.m-stats{grid-template-columns:1fr 1fr;}.hero{padding:100px 0 60px;}section{padding:60px 0;}.nl{padding:40px 24px;}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">LEX<span>NRG</span></a>
+    <div class="nav-links">
+      <a href="#modules">Modules</a>
+      <a href="#pays">Pays</a>
+      <a href="#profils">Pour qui</a>
+      <a href="#fondateur">À propos</a>
+    </div>
+    <button class="nav-cta" onclick="openNL()">Newsletter gratuite</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Plateforme ENR Afrique</div>
+        <h1 class="hero-title">Le droit ENR africain,<br><em>structuré et actionnable</em></h1>
+        <p class="hero-sub">LEXNRG centralise la réglementation, la jurisprudence et les cadres contractuels des ENR pour 10+ pays africains — en un seul endroit.</p>
+        <div class="hero-btns">
+          <button class="btn" onclick="openNL()">Recevoir la newsletter</button>
+          <a class="btn-o" href="#modules">Découvrir les modules</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-label">Base de données</div>
+        <div class="stats-row">
+          <div><div class="stat-num">10+</div><div class="stat-lbl">pays couverts</div></div>
+          <div><div class="stat-num">5</div><div class="stat-lbl">modules</div></div>
+          <div><div class="stat-num">50+</div><div class="stat-lbl">textes analysés</div></div>
+        </div>
+        <div class="card-label">Cliquez sur un pays</div>
+        <div class="country-list" id="hero-pays"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<section><div class="container"><div id="stats-grid"></div></div></section>
+
+<div class="sdiv"></div>
+<section>
+  <div class="container">
+    <div class="ey">Le problème</div>
+    <h2 class="st">L'information juridique ENR en Afrique<br>est fragmentée et inaccessible</h2>
+    <p class="ss">Les investisseurs, avocats et développeurs perdent des semaines à chercher des données dispersées dans 40 systèmes juridiques différents.</p>
+    <div class="pb-grid">
+      <div class="pb"><div class="pb-icon">📋</div><div class="pb-title">Textes introuvables</div><div class="pb-text">Journaux officiels inaccessibles, textes non traduits, lois sans décret d'application. Obtenir une fiche pays fiable prend plusieurs jours de recherche manuelle.</div></div>
+      <div class="pb"><div class="pb-icon">⚡</div><div class="pb-title">Veille impossible</div><div class="pb-text">Chaque modification réglementaire impose une recherche manuelle pays par pays. Aucun outil ne centralise les changements en temps réel pour l'Afrique.</div></div>
+      <div class="pb"><div class="pb-icon">🗺️</div><div class="pb-title">Aucune comparaison</div><div class="pb-text">Comparer les cadres réglementaires du Kenya, du Sénégal et de la Côte d'Ivoire sur un même projet est un exercice de plusieurs semaines sans outil dédié.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<section id="modules">
+  <div class="container">
+    <div class="ey">La solution</div>
+    <h2 class="st">5 modules pour tout savoir<br>avant de signer</h2>
+    <p class="ss">Cliquez sur un module pour découvrir son contenu en détail.</p>
+    <div id="modules-grid"></div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<section id="pays">
+  <div class="container">
+    <div class="ey">Couverture géographique</div>
+    <h2 class="st">10 pays africains documentés,<br>toutes les grandes régions couvertes</h2>
+    <p class="ss">Cliquez sur un pays pour accéder à sa fiche résumée.</p>
+    <div id="pays-grid"></div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<section id="profils">
+  <div class="container">
+    <div class="ey">Pour qui</div>
+    <h2 class="st">Fait pour les professionnels<br>qui opèrent en Afrique</h2>
+    <p class="ss">Quatre profils qui partagent un même besoin : une information juridique fiable, rapide et actionnable.</p>
+    <div id="profils-grid"></div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<section id="fondateur">
+  <div class="container">
+    <div class="ey">À propos</div>
+    <div id="fondateur-card"></div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<section id="newsletter">
+  <div class="container">
+    <div class="nl">
+      <div class="ey">Accès gratuit</div>
+      <h2 class="st">Regulatory Radar Afrique</h2>
+      <p class="ss">Chaque semaine : actualité réglementaire, focus pays, concept juridique clé, deal ENR décrypté. 800 mots dans votre boîte mail.</p>
+      <form class="email-row" name="newsletter" netlify netlify-honeypot="bot-field" onsubmit="submitF(event,'f-ok','f-note',this)">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="hidden" name="bot-field" style="display:none">
+        <input class="email-in" type="email" name="email" placeholder="votre@email.com" required>
+        <button class="btn" type="submit">S'inscrire →</button>
+      </form>
+      <p class="form-note" id="f-note">Gratuit · Sans spam · Désabonnement en 1 clic</p>
+      <div class="form-ok" id="f-ok">✅ Inscription confirmée ! Vous recevrez la prochaine édition dans votre boîte mail.</div>
+      <div class="soc-row" id="soc-row"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fi">
+      <div class="fl">LEX<span>NRG</span></div>
+      <div class="flinks">
+        <a href="#modules">Modules</a>
+        <a href="#pays">Pays</a>
+        <a href="#fondateur">À propos</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="mailto:ibrakalilkeita365@gmail.com">Contact</a>
+      </div>
+      <div class="fc-copy">© 2026 LEXNRG · Droit & Énergie Renouvelable en Afrique</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL CONTAINER -->
+<div id="modal-root"></div>
+
+<!-- MODAL NEWSLETTER -->
+<div class="mo nl-mo" id="mo-nl" onclick="bgc(event,'mo-nl')">
+  <div class="mb">
+    <button class="mcl" onclick="close_m('mo-nl')">✕</button>
+    <div class="m-ey">Gratuit · Hebdomadaire</div>
+    <div class="m-ti">Regulatory Radar Afrique</div>
+    <div class="m-su">Actualité réglementaire, focus pays, concept juridique, deal ENR décrypté. 800 mots par semaine dans votre boîte mail.</div>
+    <form name="newsletter-modal" netlify netlify-honeypot="bot-field" onsubmit="submitF(event,'mo-ok','mo-note',this)">
+      <input type="hidden" name="form-name" value="newsletter-modal">
+      <input type="hidden" name="bot-field" style="display:none">
+      <input class="m-in" type="email" name="email" placeholder="votre@email.com" required>
+      <button class="btn" type="submit" style="width:100%">S'inscrire gratuitement →</button>
+    </form>
+    <p id="mo-note" style="font-size:12px;color:var(--muted);margin-top:10px">Sans spam · Désabonnement en 1 clic · Vos données restent privées</p>
+    <div class="m-ok" id="mo-ok">✅ Inscription confirmée ! Vous recevrez bientôt notre newsletter.</div>
+    <p id="mo-form" style="display:none"></p>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script>
+// ─── HELPERS ────────────────────────────────────────────────
+function eri(n){return '★'.repeat(n)+'☆'.repeat(5-n);}
+function tags(arr,grey){return arr.map(t=>`<span class="${grey?'tag-g':'tag'}">${t}</span>`).join('');}
+function tagsM(arr){return arr.map(t=>`<span class="${t.type==='vert'?'tag':'tag-g'}">${t.texte}</span>`).join('');}
+
+// ─── RENDER SECTION ──────────────────────────────────────────
+function renderSection(s){
+  let h=`<div class="m-sec"><div class="m-sec-ti">${s.titre}</div>`;
+  if(s.type==='texte'){
+    h+=`<div class="m-body">${s.contenu}</div>`;
+  } else if(s.type==='liste'){
+    h+=`<ul class="m-list">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  } else if(s.type==='tags'){
+    h+=`<div class="tags">${tags(s.items)}</div>`;
+  } else if(s.type==='tags-gris'){
+    h+=`<div class="tags">${tags(s.items,true)}</div>`;
+  } else if(s.type==='tags-mixte'){
+    h+=`<div class="tags">${tagsM(s.items)}</div>`;
+  }
+  return h+'</div>';
+}
+
+// ─── MODAL BUILDER ───────────────────────────────────────────
+function buildModal(id, m, ctaFn){
+  if(!m) return '';
+  const stats = m.stats && m.stats.length
+    ? `<div class="m-stats">${m.stats.map(s=>`<div class="m-stat"><div class="m-stat-n">${s.num}</div><div class="m-stat-l">${s.lbl}</div></div>`).join('')}</div>`
+    : '';
+  const secs = (m.sections||[]).map(renderSection).join('');
+  const ctaBtn = ctaFn
+    ? `<div class="m-cta"><button class="btn" onclick="${ctaFn}">${m.cta}</button></div>`
+    : `<div class="m-cta"><button class="btn" onclick="openNL();close_m('mo-${id}')">${m.cta}</button></div>`;
+  return `
+  <div class="mo" id="mo-${id}" onclick="bgc(event,'mo-${id}')">
+    <div class="mb">
+      <button class="mcl" onclick="close_m('mo-${id}')">✕</button>
+      <div class="m-ey">${m.eyebrow}</div>
+      <div class="m-ti">${m.titre}</div>
+      <div class="m-su">${m.sous_titre}</div>
+      ${stats}${secs}${ctaBtn}
+    </div>
+  </div>`;
+}
+
+// ─── INIT ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function(){
+  var D = LEXNRG;
+  var root = document.getElementById('modal-root');
+
+  // Stats
+  document.getElementById('stats-grid').innerHTML = D.stats
+    .map(s=>`<div class="kpi"><div class="kpi-num">${s.num}</div><div class="kpi-lbl">${s.label}</div></div>`).join('');
+
+  // Hero pays
+  document.getElementById('hero-pays').innerHTML = D.pays
+    .map(p=>`<span class="ctag" onclick="open_m('mo-${p.id}')">${p.drapeau} ${p.nom}</span>`).join('');
+
+  // Modules
+  document.getElementById('modules-grid').innerHTML = D.modules.map(m=>{
+    const special = m.bientot ? `style="border-color:rgba(0,200,150,0.2);background:rgba(0,200,150,0.04);cursor:default;"` : '';
+    const click = m.bientot ? '' : `onclick="open_m('mo-${m.id}')"`;
+    const numStyle = m.bientot ? `style="opacity:1;color:var(--green)"` : '';
+    const titleStyle = m.bientot ? `style="color:var(--green)"` : '';
+    return `<div class="mc" ${special} ${click}>
+      <div class="mc-num" ${numStyle}>${m.num}</div>
+      <div class="mc-title" ${titleStyle}>${m.titre}</div>
+      <div class="mc-desc">${m.desc}</div>
+      <div class="tags">${m.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+
+  // Pays
+  document.getElementById('pays-grid').innerHTML = D.pays.map(p=>`
+    <div class="pc" onclick="open_m('mo-${p.id}')">
+      <div class="pc-flag">${p.drapeau}</div>
+      <div class="pc-badge">${p.badge}</div>
+      <div class="pc-nom">${p.nom}</div>
+      <div class="pc-region">${p.region}</div>
+      <div class="pc-eri"><span class="pc-eri-lbl">ERI</span><span class="pc-stars">${eri(p.eri)}</span></div>
+      <div class="tags">${p.tags_carte.map(t=>`<span class="pc-tag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+
+  // Profils
+  document.getElementById('profils-grid').innerHTML = D.profils.map(p=>`
+    <div class="pf">
+      <div class="pf-icon">${p.icon}</div>
+      <div><div class="pf-title">${p.titre}</div><div class="pf-text">${p.texte}</div></div>
+    </div>`).join('');
+
+  // Fondateur
+  var f = D.fondateur;
+  document.getElementById('fondateur-card').innerHTML = `
+    <div class="fc">
+      <div class="fc-avatar">${f.initiales}</div>
+      <div>
+        <div class="fc-name">${f.nom}</div>
+        <div class="fc-title">${f.titre}</div>
+        <div class="fc-bio">${f.bio}</div>
+        <div class="fc-badges">${f.badges.map(b=>`<span class="fc-badge">${b}</span>`).join('')}</div>
+      </div>
+    </div>`;
+
+  // Réseaux sociaux
+  document.getElementById('soc-row').innerHTML = D.social
+    .map(s=>`<a class="soc-a" href="${s.url}" target="_blank">${s.label}</a>`).join('');
+
+  // Construire toutes les modales modules + pays
+  var modals = '';
+  D.modules.forEach(m=>{ if(m.modal) modals += buildModal(m.id, m.modal); });
+  D.pays.forEach(p=>{ if(p.modal) modals += buildModal(p.id, p.modal); });
+  root.innerHTML = modals;
+});
+
+// ─── MODAL CONTROLS ─────────────────────────────────────────
+function open_m(id){ var el=document.getElementById(id); if(el){el.classList.add('open');document.body.style.overflow='hidden';} }
+function close_m(id){ var el=document.getElementById(id); if(el){el.classList.remove('open');document.body.style.overflow='';} }
+function openNL(){ open_m('mo-nl'); }
+function bgc(e,id){ if(e.target.id===id) close_m(id); }
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    document.querySelectorAll('.mo.open').forEach(function(m){m.classList.remove('open');});
+    document.body.style.overflow='';
+  }
+});
+
+// ─── FORM SUBMIT ─────────────────────────────────────────────
+function submitF(e, okId, noteId, form){
+  e.preventDefault();
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  .then(function(){ ok(okId,noteId,form); })
+  .catch(function(){ ok(okId,noteId,form); });
+}
+function ok(okId,noteId,form){
+  form.style.display='none';
+  var n=document.getElementById(noteId); if(n) n.style.display='none';
+  var s=document.getElementById(okId); if(s) s.style.display='block';
+}
+</script>
+</body>
+</html>
